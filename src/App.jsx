@@ -14,6 +14,10 @@ import { format, addDays, subDays } from 'date-fns';
 import TaskModal from './components/TaskModal';
 import CalendarView from './components/CalendarView';
 
+const API_URL = import.meta.env.DEV 
+  ? '/api/chat' 
+  : 'https://aura-planner-w55k.onrender.com/api/chat';
+
 function App() {
   const { settings, toggleTheme, tasks, toggleReminders, updateTask, addTask, categories, addCategory } = useTasks();
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -96,7 +100,7 @@ function App() {
            content: m.text
          }));
 
-      const response = await fetch('/api/chat', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
