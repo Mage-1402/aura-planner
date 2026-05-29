@@ -1,0 +1,217 @@
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Light Theme Variables */
+  --bg-main: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  --border-color: #e2e8f0;
+  
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #10b981;
+  
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body.dark {
+  /* Dark Theme Variables */
+  --bg-main: #06070a;
+  --bg-sidebar: #0b0d16;
+  --bg-card: rgba(16, 18, 30, 0.85);
+  --bg-hover: #1b1e32;
+  
+  --text-main: #f1f5f9;
+  --text-muted: #7d8aa4;
+  
+  --border-color: rgba(139, 92, 246, 0.2);
+  
+  --primary: #9061f9;
+  --primary-hover: #a78bfa;
+  --danger: #ff4b72;
+  --danger-hover: #ff7b9a;
+  --success: #00f5a0;
+}
+
+body.dark .mobile-wrapper {
+  background: linear-gradient(180deg, rgba(16, 18, 30, 0.9) 0%, rgba(10, 11, 19, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+body.dark .quote-banner {
+  background: linear-gradient(90deg, rgba(144, 97, 249, 0.12) 0%, transparent 100%);
+  border-left: 4px solid #9061f9;
+  box-shadow: inset 0 0 10px rgba(144, 97, 249, 0.05);
+}
+
+body.dark .tab-btn.active {
+  background: linear-gradient(135deg, #9061f9, #06b6d4);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 20px rgba(144, 97, 249, 0.4);
+}
+
+body.dark .logo-icon {
+  background: linear-gradient(135deg, #9061f9, #06b6d4);
+  box-shadow: 0 0 15px rgba(144, 97, 249, 0.5);
+}
+
+body.dark .app-container {
+  background: radial-gradient(circle at 50% 50%, #111322 0%, #05060b 100%);
+}
+
+body.dark .nav-arrow {
+  background-color: rgba(27, 30, 50, 0.5);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+body.dark .nav-arrow:hover {
+  background-color: var(--primary);
+  box-shadow: 0 0 10px rgba(144, 97, 249, 0.3);
+}
+
+body.dark .date-nav {
+  background-color: rgba(11, 13, 22, 0.4);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden; /* App structure handles scrolling */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes toastSlide {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-lg);
+  animation: toastSlide 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 50;
+}
+
+.toast button {
+  color: var(--bg-main);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s;
+}
+
+body.dark .toast button {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.toast button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark .toast button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* App Layout */
+#root {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Utils */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
