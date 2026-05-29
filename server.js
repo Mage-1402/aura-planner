@@ -85,7 +85,7 @@ app.post('/api/chat', async (req, res) => {
     ).join('\n') || 'None';
 
     const requestBody = JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
+      model: 'llama-3.1-8b-instant',
       messages: [
         {
           role: 'system',
